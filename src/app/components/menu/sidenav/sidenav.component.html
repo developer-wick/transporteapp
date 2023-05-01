@@ -1,1 +1,28 @@
-<p>sidenav works!</p>
+<mat-nav-list>
+    <div class="logo py-4">
+        <mat-icon style="color: aliceblue;">dashboard</mat-icon>
+    </div>
+
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-icon>arrow_drop_down_circle</mat-icon>Administracion
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/home" (click)="accordion.closeAll();">Usuarios</a>
+                <a mat-list-item routerLink="#" (click)="accordion.closeAll();">Permisos</a>
+            </mat-nav-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-icon>arrow_drop_down_circle</mat-icon>Catalogos
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/home" (click)="accordion.closeAll();">Camion</a>
+                <a mat-list-item routerLink="#" (click)="accordion.closeAll();">Transporte</a>
+            </mat-nav-list>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+
+</mat-nav-list>

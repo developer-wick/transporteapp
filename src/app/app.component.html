@@ -1,2 +1,17 @@
-<router-outlet>
-</router-outlet>
+<ng-container *ngIf="!authservice.loggedIn()">
+    <mat-drawer-container>
+        <mat-drawer-content>
+            <app-login></app-login>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</ng-container>
+
+<mat-drawer-container *ngIf="authservice.loggedIn()">
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="wraper main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 side-image">
+                <!--
+                <img src="../../../assets/2.jpg" alt="">
+                -->
+                <div class="text">
+                    <p>Desarrollo de Sistemas</p>
+                </div>
+            </div>
+            <div class="col-md-6 right">
+                <div class="input-box">
+                    <header>Inicio de Session</header>
+                    <form (submit)="singin()">
+                        <div class="input-field">
+                            <input type="text" class="input" [(ngModel)]="user.nombre" name="nombre" required autocomplete="off">
+                            <label for="user">Usuario</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" class="input" [(ngModel)]="user.clave" name="clave" required>
+                            <label for="passwd">Clave</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="submit" class="submit" value="Inicio">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
