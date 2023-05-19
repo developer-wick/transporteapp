@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="">
+            <div class="input-box">
+                <header class="title">Registro de Usuario</header>
+                <form (submit)="save()">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-field">
+                                <input type="text" class="input" [(ngModel)]="user.nombres" name="nombres" required autocomplete="off">
+                                <label for="user">Nombres</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input-field">
+                                <input type="text" class="input" [(ngModel)]="user.apellidos" name="apellidos" required autocomplete="off">
+                                <label for="user">Apellidos</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-field">
+                                <input type="text" class="input" [(ngModel)]="user.dpi" name="dpi" required autocomplete="off">
+                                <label for="user">No. DPI</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input-field">
+                                <input type="text" class="input" [(ngModel)]="user.telefono" name="telefono" required autocomplete="off">
+                                <label for="user">Telefono</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-right: 0;">
+                        <div class="col-lg-12" style="text-align: right;">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

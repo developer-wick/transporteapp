@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/acceso/login/login.component';
@@ -22,6 +23,8 @@ import { HeaderComponent } from './components/menu/header/header.component';
 import { SidenavComponent } from './components/menu/sidenav/sidenav.component';
 import { HomeComponent } from './components/menu/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsuariosComponent } from './components/administracion/usuarios/usuarios.component';
+import { PermisosComponent } from './components/administracion/permisos/permisos.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CambioclaveComponent,
     HeaderComponent,
     SidenavComponent,
-    HomeComponent
+    HomeComponent,
+    UsuariosComponent,
+    PermisosComponent
   ],
   imports: [
     BrowserModule,
