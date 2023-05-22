@@ -14,11 +14,11 @@
                     <header>Inicio de Session</header>
                     <form (submit)="singin()">
                         <div class="input-field">
-                            <input type="text" class="input" [(ngModel)]="user.nombre" name="nombre" required autocomplete="off">
+                            <input type="text" class="input" [(ngModel)]="user.username" name="nombre" required autocomplete="off">
                             <label for="user">Usuario</label>
                         </div>
                         <div class="input-field">
-                            <input type="password" class="input" [(ngModel)]="user.clave" name="clave" required>
+                            <input type="password" class="input" [(ngModel)]="user.passwd" name="clave" required>
                             <label for="passwd">Clave</label>
                         </div>
                         <div class="input-field">

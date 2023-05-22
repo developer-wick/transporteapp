@@ -25,12 +25,13 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
+    localStorage.removeItem('User');
     localStorage.removeItem('token');
     this.router.navigate(['/']);
   }
 
   getUser(){
-    this.exampleString = localStorage.getItem('token');
+    this.exampleString = localStorage.getItem('User');
   }
 
 }

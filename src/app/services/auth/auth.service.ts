@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private URL = 'http://localhost:8080';
+  private URL = 'http://159.89.53.199:8080/CatalogosTRS/api/';
+  //private URL = 'http://localhost:8080';
 
   constructor( 
     private http:HttpClient,
@@ -15,11 +16,16 @@ export class AuthService {
     ) { }
 
   singin (user:any) {
-    return this.http.post<any>(this.URL+'/singin',user);
+    //return this.http.post<any>(this.URL+'/singin',user);
+    return this.http.post<any>(this.URL+'login',user);
   }
 
   loggedIn () {
     return !!localStorage.getItem('token');
+  }
+
+  getToken () {
+    localStorage.getItem('token');
   }
   
 }
