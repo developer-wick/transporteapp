@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
+import Swal from 'sweetalert2';
+
 import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
@@ -36,20 +39,36 @@ export class LoginComponent implements OnInit {
       res=>{
         let msg = res.ms;
         var codmsg = msg.codmsg;
-        let tok = res.jwt;
-        var personal = res.usuario;
-        var usuario = personal.username;
+        
         console.log("MENSAJE..: "+codmsg);
         console.log("RESPUESTA..: "+JSON.stringify(res));
         //localStorage.setItem('token',tok);
         //this.router.navigate(['/home']);
         
         if(codmsg == '1'){
+         
+          let tok = res.jwt;
+          var personal = res.usuario;
+          var usuario = personal.username; 
           localStorage.setItem('User',usuario);
           localStorage.setItem('token',tok);
+          Swal.fire({
+            title: 'Bienvenido.',
+            text: msg.mensjae,
+            timer:1000
+          })        
+
           this.router.navigate(['/home']);
         }
         
+        if(codmsg == '0'){
+          Swal.fire({
+          title: "Error !",
+          text:  msg.mensaje,
+          timer: 1000});
+
+          console.log('VALOR ', msg.mensaje)
+        }
       },
       err =>{
         console.log("ERROR..: "+ JSON.stringify(err.status));
@@ -57,9 +76,11 @@ export class LoginComponent implements OnInit {
           //localStorage.setItem('User','ERROR');
           //localStorage.setItem('token','SIN TOKEN');
           this.router.navigate(['/']);
+          console.log('error...')
         }
       })
       
   }
 
 }
+
