@@ -1,4 +1,11 @@
+import { transition } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { TransportistaService } from 'src/app/services/catalogos/transportista.service';
+import { environment } from 'src/environments/environment';
+import { Transportista } from '../../model/Transportista';
+
+
+
 
 @Component({
   selector: 'app-transportista',
@@ -7,9 +14,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransportistaComponent implements OnInit {
 
-  constructor() { }
+  private transportista : Transportista | any;
+
+  constructor(private serviceTrans: TransportistaService) { }
 
   ngOnInit(): void {
+   this.getTranspostista()
+   //console.log('Tansportusta:.....',this.serviceTrans.getTrans());
+  }
+
+  getTranspostista(){
+    this.serviceTrans.getTrans().subscribe((trans:any) =>{
+      this.transportista = trans;
+      console.log('TRANSPORTISTA:....', this.transportista);
+    })
   }
 
 }

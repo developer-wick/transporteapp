@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  //base_ulr: 'http://159.89.53.199:8080/CatalogosTRS/api'
+  base_ulr: 'http://localhost:8080/CatalogosTRS/api'
 };
 
 /*
