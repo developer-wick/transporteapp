@@ -61,11 +61,12 @@ import { PermisosComponent } from './components/administracion/permisos/permisos
 
   ],
   providers: [
+    /*
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokeninterceptorService,
       multi:true
-    }
+    }*/
   ],
   bootstrap: [AppComponent]
 })

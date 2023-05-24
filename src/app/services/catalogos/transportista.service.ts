@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, JsonpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { Transportista } from 'src/app/components/model/Transportista';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
@@ -18,8 +18,8 @@ export class TransportistaService {
   constructor(private  http: HttpClient,private authservice: AuthService) { }
 
 
-  getTrans(): Observable<Object>{
-    const end = `${url}/transportista`  
+  getTrans(){
+   // const end = `${url}/transportista`  
     /*   
     const end = `${url}/transportista`  
     const b =`Bearer ${localStorage.getItem('token')}` 
@@ -44,7 +44,16 @@ export class TransportistaService {
     'Content-Type': 'application/json',
     'Authorization': this.tk });
     let options = { headers: headers };
-    return this.http.get(`${url}/transportista`, options); 
+
+    console.log('HEADERS',options, '  TOKEN:....', this.tk);
+    console.log('URL::::.....', `${url}/transportista`)
+    return this.http.get(`${url}/transportista`, options)
+    .pipe(
+      
+      catchError(e =>{
+      console.log('ERROR:....' ,e);
+      return e
+    })); 
   }
 
 }

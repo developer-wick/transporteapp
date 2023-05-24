@@ -23,13 +23,14 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    localStorage.removeItem('token');
+   // localStorage.removeItem('token');
+   
   }
 
   singin () {
-    console.log("MODELO DE USUARIO.: "+JSON.stringify(this.user));
-    console.log("DATOS DE USUARIO..: "+this.user.username);
-    console.log("DATOS DE USUARIO..: "+this.user.passwd);
+    //console.log("MODELO DE USUARIO.: "+JSON.stringify(this.user));
+    //console.log("DATOS DE USUARIO..: "+this.user.username);
+    //console.log("DATOS DE USUARIO..: "+this.user.passwd);
     /*
     localStorage.setItem('token',this.user.nombre);
     this.router.navigate(['/home']);*/
@@ -40,14 +41,15 @@ export class LoginComponent implements OnInit {
         let msg = res.ms;
         var codmsg = msg.codmsg;
         
-        console.log("MENSAJE..: "+codmsg);
-        console.log("RESPUESTA..: "+JSON.stringify(res));
+        //console.log("MENSAJE..: "+codmsg);
+        //console.log("RESPUESTA..: "+JSON.stringify(res));
         //localStorage.setItem('token',tok);
         //this.router.navigate(['/home']);
         
         if(codmsg == '1'){
          
           let tok = res.jwt;
+          console.log('TOKEN:::....',tok)
           var personal = res.usuario;
           var usuario = personal.username; 
           localStorage.setItem('User',usuario);

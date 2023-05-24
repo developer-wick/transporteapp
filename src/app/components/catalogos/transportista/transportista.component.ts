@@ -1,5 +1,6 @@
 import { transition } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { catchError, map } from 'rxjs';
 import { TransportistaService } from 'src/app/services/catalogos/transportista.service';
 import { environment } from 'src/environments/environment';
 import { Transportista } from '../../model/Transportista';
@@ -24,10 +25,10 @@ export class TransportistaComponent implements OnInit {
   }
 
   getTranspostista(){
-    this.serviceTrans.getTrans().subscribe((trans:any) =>{
-      this.transportista = trans;
-      console.log('TRANSPORTISTA:....', this.transportista);
+    this.serviceTrans.getTrans().subscribe(response =>{
+      console.log(response)
     })
+    
   }
 
 }
