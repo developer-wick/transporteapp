@@ -11,12 +11,15 @@ export class TokeninterceptorService implements HttpInterceptor {
   constructor(private authservice: AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const tk = localStorage.getItem('token');
     const tokenizeReq = req.clone({
       setHeaders: {
         'Content-Type': 'application/json',
-        Authorization: `${this.authservice.getToken()}`
+        'Authorization': `${this.authservice.getToken()}`
+        //'Authorization': tk
       }
     })
+    console.log('REQUEST:....', tokenizeReq)
     //return next.handle(tokenizeReq);
     return next.handle(tokenizeReq)
       /*
@@ -39,3 +42,5 @@ export class TokeninterceptorService implements HttpInterceptor {
 
 
 }
+
+

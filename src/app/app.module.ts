@@ -81,11 +81,12 @@ import { PermisosComponent } from './components/administracion/permisos/permisos
   ],*/
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
+    /*
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokeninterceptorService,
       multi:true
-    }
+    }*/
   ],
   bootstrap: [AppComponent]
 })

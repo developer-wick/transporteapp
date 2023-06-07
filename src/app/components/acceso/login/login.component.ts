@@ -26,19 +26,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.removeItem('token');
-    /** spinner starts on init */
-    this.spinner.show();
-
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 5000); //5 Segundos
+    
   }
 
-  singin() {
-    console.log("MODELO DE USUARIO.: " + JSON.stringify(this.user));
-    console.log("DATOS DE USUARIO..: " + this.user.username);
-    console.log("DATOS DE USUARIO..: " + this.user.passwd);
+  singin () {
+    console.log("MODELO DE USUARIO.: "+JSON.stringify(this.user));
+    console.log("DATOS DE USUARIO..: "+this.user.username);
+    console.log("DATOS DE USUARIO..: "+this.user.passwd);
     /*
     localStorage.setItem('token',this.user.nombre);
     this.router.navigate(['/home']);*/
@@ -48,15 +42,19 @@ export class LoginComponent implements OnInit {
       res => {
         let msg = res.ms;
         var codmsg = msg.codmsg;
-
-        console.log("MENSAJE..: " + codmsg);
-        console.log("RESPUESTA..: " + JSON.stringify(res));
+        
+        console.log("MENSAJE..: "+codmsg);
+        console.log("RESPUESTA..: "+JSON.stringify(res));
         //localStorage.setItem('token',tok);
         //this.router.navigate(['/home']);
 
         if (codmsg == '1') {
-
+          this.spinner.show();
+          setTimeout(() => {
+            this.spinner.hide();
+          }, 5000);
           let tok = res.jwt;
+          console.log('TOKEN:::....',tok)
           var personal = res.usuario;
           var usuario = personal.username;
           localStorage.setItem('User', usuario);
@@ -80,11 +78,21 @@ export class LoginComponent implements OnInit {
           console.log('VALOR ', msg.mensaje)
         }
       },
-      err => {
-        console.log("ERROR..: " + JSON.stringify(err.status));
-        if (err.status == '0') {
+      err =>{
+        Swal.fire({
+          title: "Error !",
+          text:  'El Servicio no esta disponible. Intente mas tarde.!!',
+          timer: 1000});
+        this.router.navigate(['/']);
+        console.log('error...')
+        console.log("ERROR..: "+ JSON.stringify(err.status));
+        if(err.status == '0'){
           //localStorage.setItem('User','ERROR');
           //localStorage.setItem('token','SIN TOKEN');
+          Swal.fire({
+            title: "Error !",
+            text:  'El Servicio no esta disponible. Intente mas tarde.!!',
+            timer: 1000});
           this.router.navigate(['/']);
           console.log('error...')
         }
