@@ -1,1 +1,65 @@
-<p>transportista works!</p>
+<div class="container">
+
+
+    <div class="container-fluid">
+    
+        <div class="container-md">
+         
+            <div class="card border-info">
+                <div class="card-header">
+                    <h3>Titulo Tabla</h3>
+                </div>   
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="visibility: hidden; display: none;">id</th>
+                                <th>NIT</th>
+                                <th>NOMBRES</th>
+                                <th>APELLIDOS</th>
+                                <th>RAZON SOCIAL</th>
+                                <th>DIRECCION</th>
+                                <th>TELEFONO</th>
+                                
+                                <th>ESTADO</th>
+                                <th class="text-nowrap w100">Acciones</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of trans">
+                                <td style="visibility: hidden; display: none;">
+                                  {{ item.trans_id }}
+                                </td>
+                                <td>{{ item.trans_nit }}</td>
+                                <td>{{ item.trans_nombres }}</td>
+                                <td>{{ item.trans_apellidos }}</td>
+                                <td>{{ item.trans_razon_social }}</td>
+                                <td>{{ item.trans_direccion }}</td>
+                                <td>{{ item.trans_telefono }}</td>
+                               
+                                <td>{{ item.trans_estado }}</td>
+                                <td>
+                                  <div class="row mx-md-n1">
+                                    <div class="col px-md-1">
+                                      <a class="bi bi-pencil-fill cursor"(click)="editarTransporte(item)" style="font-size: 1rem; width: 200px;"></a>
+                                    </div>
+                                    <div class="col px-md-1">
+                                      <a
+                                        class="bi bi-trash cursor"
+                                        style="font-size: 1rem;"
+                                        (click)="eliminarTrans(item)"
+                                      ></a>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                        </tbody>
+                    </table>
+                </div> 
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

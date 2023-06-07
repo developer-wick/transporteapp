@@ -73,10 +73,14 @@ export class LoginComponent implements OnInit {
         }
       },
       err =>{
-        console.log("ERROR..: "+ JSON.stringify(err.status));
-        if(err.status == '0'){
+        console.log("ERROR..: "+ JSON.stringify(err));
+        if ( err.status == 400 ){
           //localStorage.setItem('User','ERROR');
           //localStorage.setItem('token','SIN TOKEN');
+          Swal.fire({
+            title: "Error !",
+            text:  'El Servicio no esta disponible. Intente mas tarde.!!',
+            timer: 1000});
           this.router.navigate(['/']);
           console.log('error...')
         }

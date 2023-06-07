@@ -46,6 +46,7 @@ import { PermisosComponent } from './components/administracion/permisos/permisos
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+   // NgxSpinnerModule,
 
     //MATERIAL
     MatSidenavModule,

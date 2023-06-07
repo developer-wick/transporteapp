@@ -19,37 +19,15 @@ export class TransportistaService {
 
 
   getTrans(){
-   // const end = `${url}/transportista`  
-    /*   
-    const end = `${url}/transportista`  
-    const b =`Bearer ${localStorage.getItem('token')}` 
-    const httpOptions = {
-        headers: new HttpHeaders({ 'Authorization':`Bearer ${localStorage.getItem('token')}`, 'Content-Type': 'application/json' })
-    }
-*/
-    //const headers = { 'content-type': 'application/json', 'Authorization': this.tk }
-    //const requestOptions = { headers: headers };
-   
-    //let tkn = localStorage.getItem('token');
-
-    //const headers = HttpHeaders({ 'Authorization': tkn, 'Content-Type': 'application/json' });
-    //const headers = new HttpHeaders().set('content-type', 'application/json').set('Authorization', this.tk);
-    //const header = new Headers();
-   //header.append('Authorization': this.tk);
-    //console.log('HEADERS', httpOptions)  
-   // console.log('BARARER', b)  
-
-
-   let headers = new HttpHeaders({
+    let headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'Authorization': this.tk });
     let options = { headers: headers };
 
-    console.log('HEADERS',options, '  TOKEN:....', this.tk);
-    console.log('URL::::.....', `${url}/transportista`)
+   // console.log('HEADERS',options, '  TOKEN:....', this.tk);
+   // console.log('URL::::.....', `${url}/transportista`)
     return this.http.get(`${url}/transportista`, options)
     .pipe(
-      
       catchError(e =>{
       console.log('ERROR:....' ,e);
       return e
