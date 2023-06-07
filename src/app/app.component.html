@@ -6,6 +6,8 @@
     </mat-drawer-container>
 </ng-container>
 
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
 <mat-drawer-container *ngIf="authservice.loggedIn()">
     <mat-drawer mode="side" [opened]="sideBarOpen">
         <app-sidenav></app-sidenav>

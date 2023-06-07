@@ -1,7 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { DataTablesModule } from 'angular-datatables';
 
 import { TokeninterceptorService } from './services/tokeninterceptor/tokeninterceptor.service';
 
@@ -17,6 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/acceso/login/login.component';
@@ -24,7 +29,7 @@ import { CambioclaveComponent } from './components/acceso/cambioclave/cambioclav
 import { HeaderComponent } from './components/menu/header/header.component';
 import { SidenavComponent } from './components/menu/sidenav/sidenav.component';
 import { HomeComponent } from './components/menu/home/home.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { UsuariosComponent } from './components/administracion/usuarios/usuarios.component';
 import { PermisosComponent } from './components/administracion/permisos/permisos.component';
 
@@ -46,6 +51,8 @@ import { PermisosComponent } from './components/administracion/permisos/permisos
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxSpinnerModule,
+    DataTablesModule,
 
     //MATERIAL
     MatSidenavModule,
@@ -57,9 +64,22 @@ import { PermisosComponent } from './components/administracion/permisos/permisos
     MatButtonModule,
     MatExpansionModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
 
   ],
+  /*
+  exports: [
+    MatButtonModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatSidenavModule,
+    MatToolbarModule,
+  ],*/
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
