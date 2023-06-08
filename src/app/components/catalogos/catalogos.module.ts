@@ -10,7 +10,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { CamionComponent } from './camion/camion.component';
 import { PilotosComponent } from './pilotos/pilotos.component';
 import { CatalogosRoutingModule } from './catalogos-routing.module';
-
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -26,7 +26,9 @@ import { CatalogosRoutingModule } from './catalogos-routing.module';
   ],
   imports: [
     CommonModule,
-    CatalogosRoutingModule
+    CatalogosRoutingModule,
+    DataTablesModule,
+    
   ]
 })
 export class CatalogosModule { }

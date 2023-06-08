@@ -10,6 +10,7 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { DataTableDirective } from 'angular-datatables'
 import { Subject } from 'rxjs'
 
+
 @Component({
   selector: 'app-transportista',
   templateUrl: './transportista.component.html',
@@ -23,12 +24,14 @@ export class TransportistaComponent implements OnInit, OnDestroy {
 
   public transportista: Transportista | any;
   public trans: Transportista | any;
+  //public language : LanguageApp;
  
   /**
    * Ordenamiento de tabla
    */
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+  dtTrigger = new Subject<any>();
+  //dtTrigger: Subject<any> = new Subject<any>();
   isDtInitialized: boolean = false
   
   constructor(
@@ -44,9 +47,11 @@ export class TransportistaComponent implements OnInit, OnDestroy {
 
     this.dtOptions = {
       pagingType: 'full_numbers',
+      pageLength: 10,
       scrollCollapse: true,
       destroy: true,
       scrollY: '50vh',
+      
     }
   }
 
@@ -69,18 +74,20 @@ export class TransportistaComponent implements OnInit, OnDestroy {
   getTranspostista() {
     this.serviceTrans.getTrans().subscribe((response) => {
       this.transportista = response
-      
-      if (this.transportista.codigo === '7') {
+      console.log(this.transportista)
+      if (  this.transportista.codigo === '7' || this.transportista.codigo === '5'
+         || this.transportista.codigo === '6' || this.transportista.codigo === '4' 
+         || this.transportista.codigo === '3') {
         Swal.fire({
           title: 'Error !',
-          text: this.transportista.ms.mensaje,
+          text: this.transportista.mensaje,
           timer: 1000,
         })
         localStorage.removeItem('token')
         this.router.navigate(['/'])
       }
 
-      if (this.transportista.ms.codigo === '1') {
+      if (this.transportista.ms.codigo === "1") {
         this.trans = this.transportista.listTransportista;
         this.spinner.hide();
         this.dtTrigger.next(null);
