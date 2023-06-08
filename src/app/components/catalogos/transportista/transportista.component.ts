@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core'
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 
@@ -6,31 +6,48 @@ import { Router } from '@angular/router'
 import { TransportistaService } from 'src/app/services/catalogos/transportista.service'
 import Swal from 'sweetalert2'
 import { Transportista } from '../../model/Transportista'
+import { NgxSpinnerService } from 'ngx-spinner'
+import { DataTableDirective } from 'angular-datatables'
+import { Subject } from 'rxjs'
 
 @Component({
   selector: 'app-transportista',
   templateUrl: './transportista.component.html',
   styleUrls: ['./transportista.component.css'],
 })
-export class TransportistaComponent implements OnInit {
-  //@ViewChild(DataTableDirective, { static: false })
+export class TransportistaComponent implements OnInit, OnDestroy {
+ // @ViewChild(DataTableDirective, { static: false })
+ // dtElement: DataTableDirective | undefined
   
   [x: string]: any
 
   public transportista: Transportista | any;
   public trans: Transportista | any;
-  //private transportista: Transportista = new Transportista();
-
+ 
+  /**
+   * Ordenamiento de tabla
+   */
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+  isDtInitialized: boolean = false
+  
   constructor(
     private serviceTrans: TransportistaService,
     private router: Router,
-    public form: FormBuilder,
-  ) // private spinner: NgxSpinnerService,
+    public form: FormBuilder,private spinner: NgxSpinnerService
+  ) // ,
   {}
 
   ngOnInit(): void {
     this.getTranspostista();
-    //console.log('Tansportusta:.....',this.serviceTrans.getTrans());
+    this.spinner.show();
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      scrollCollapse: true,
+      destroy: true,
+      scrollY: '50vh',
+    }
   }
 
 
@@ -65,6 +82,8 @@ export class TransportistaComponent implements OnInit {
 
       if (this.transportista.ms.codigo === '1') {
         this.trans = this.transportista.listTransportista;
+        this.spinner.hide();
+        this.dtTrigger.next(null);
         console.log('Entro al if', this.transportista)
       } else {
         Swal.fire({
@@ -83,5 +102,10 @@ export class TransportistaComponent implements OnInit {
   }
   eliminarTrans(transportista: Transportista | any){
 
+  }
+
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
 }
