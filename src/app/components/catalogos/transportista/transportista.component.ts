@@ -9,6 +9,7 @@ import { Transportista } from '../../model/Transportista'
 import { NgxSpinnerService } from 'ngx-spinner'
 import { DataTableDirective } from 'angular-datatables'
 import { Subject } from 'rxjs'
+import { LanguageApp } from '../../LanguageApp'
 
 
 @Component({
@@ -30,8 +31,8 @@ export class TransportistaComponent implements OnInit, OnDestroy {
    * Ordenamiento de tabla
    */
   dtOptions: DataTables.Settings = {};
-  dtTrigger = new Subject<any>();
-  //dtTrigger: Subject<any> = new Subject<any>();
+  //dtTrigger = new Subject<any>();
+  dtTrigger: Subject<any> = new Subject<any>();
   isDtInitialized: boolean = false
   
   constructor(
@@ -51,6 +52,7 @@ export class TransportistaComponent implements OnInit, OnDestroy {
       scrollCollapse: true,
       destroy: true,
       scrollY: '50vh',
+      language: LanguageApp.spanish_datatables
       
     }
   }
@@ -106,8 +108,12 @@ export class TransportistaComponent implements OnInit, OnDestroy {
 
   editarTransporte(transportista: Transportista | any){
 
+    console.log('Boton Editar.')
+
   }
   eliminarTrans(transportista: Transportista | any){
+
+    console.log('Boton Eliminar.')
 
   }
 
