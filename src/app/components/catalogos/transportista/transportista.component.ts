@@ -25,6 +25,7 @@ export class TransportistaComponent implements OnInit, OnDestroy {
 
   public transportista: Transportista | any;
   public trans: Transportista | any;
+  public showForm :       boolean    = false;
   //public language : LanguageApp;
  
   /**
@@ -117,6 +118,30 @@ export class TransportistaComponent implements OnInit, OnDestroy {
 
   }
 
+  guartarTans(){
+
+  }
+
+  validaNit(){
+
+  }
+  validaDpi(){
+
+  }
+
+  valform() {}
+
+  campoValido(campo: any) {
+    //return ( this.formTrans.controls[campo].invalid & this.formTrans.controls[campo].touched )
+  }
+  ocultaForm() {
+    this.displaForm();
+    console.log('Motrar formulario')
+  }
+
+  displaForm() {
+    this.showForm = true;
+  }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();

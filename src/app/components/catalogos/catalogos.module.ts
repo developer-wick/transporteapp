@@ -11,6 +11,7 @@ import { CamionComponent } from './camion/camion.component';
 import { PilotosComponent } from './pilotos/pilotos.component';
 import { CatalogosRoutingModule } from './catalogos-routing.module';
 import { DataTablesModule } from 'angular-datatables';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { DataTablesModule } from 'angular-datatables';
     CommonModule,
     CatalogosRoutingModule,
     DataTablesModule,
+    ReactiveFormsModule
     
   ]
 })
