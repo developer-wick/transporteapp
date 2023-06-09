@@ -1,277 +1,226 @@
 <div class="container">
-<!--Formulario de tansportista-->
-<div class="container-fluid" *ngIf="showForm">
-  <div class="container-md">
-    <div class="card border-info">
-      <div class="card-header">
-         <h3 class="card-title" style="text-align: center; margin-top: 25px;">
-        
-      </h3>
-      </div>
-    <div class="card-body bodyTRans" style="padding-bottom: 0px;">
-     
-      <form [formGroup]="formTrans">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <input style="visibility: hidden; display: none;"type="number" class="form-control"formControlName="id"/>
-            <label>NIT</label>
-            <input type="number"  class="form-control" formControlName="nit"  placeholder="NIT" (change)="validaNit()"/>
-            <small class="form-control-feedback text-danger" *ngIf="campoValido('nit')" >
-              El NIT no puede estar vacio, minimo 6 caracteres.
-            </small>
-          </div>
-          <div class="form-group col-md-6">
-            <label>DPI</label>
-            <input type="number" class="form-control" formControlName="dpi" placeholder="DPI" (change)="validaDpi()" />
-            <small class="form-control-feedback text-danger" *ngIf="campoValido('dpi')" >
-              El DPI no puede estar vacio, minimo 12 caracteres.
-            </small>
-          </div>
+  <!--Formulario de tansportista-->
+  <div class="container-fluid" *ngIf="showForm">
+    <div class="container-md">
+      <div class="card border-info">
+        <div class="card-header">
+          <h3 class="card-title" style="text-align: center; margin-top: 25px;">
+
+          </h3>
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label>RAZON SOCIAL</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="razon_social"
-              placeholder="Razon Social"
-            />
-            <small
-              class="form-control-feedback text-danger"
-              *ngIf="campoValido('razon_social')"
-            >
-              El razon social no puede estar vacio, minimo 2 caracteres.
-            </small>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>NOMBRES</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="nombres"
-              placeholder="Nombres"
-            />
-            <small
-              class="form-control-feedback text-danger"
-              *ngIf="campoValido('nombres')"
-            >
-              Los nombres no puede estar vacios, minimo 2 caracteres.
-            </small>
-          </div>
-          <div class="form-group col-md-6">
-            <label>APELLIDOS</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="apellidos"
-              placeholder="Apellidos"
-            />
-            <small
-              class="form-control-feedback text-danger"
-              *ngIf="campoValido('apellidos')"
-            >
-              Los apellidos no puede estar vacios, minimo 2 caracteres.
-            </small>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-9">
-            <label>DIRECCION</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="direccion"
-              placeholder="Direccion"
-            />
-            <small
-              class="form-control-feedback text-danger"
-              *ngIf="campoValido('direccion')"
-            >
-              La direccion no puede estar vacia, minimo 2 caracteres.
-            </small>
-          </div>
-          <div class="form-group col.md-3" style="text-align: center;">
-            <label style="text-align:justify;">Estado</label>
-            <div class="form-check form-inline">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  id="radioActivo"
-                  value="A"
-                  formControlName="estado"
-                  id="radioActivo"
-                  checked="checked"
-                />
-                <label class="form-check-label" for="radioActivo">
-                  Activo
-                </label>
+        <div class="card-body bodyTRans " style="padding-bottom: 0px;">
+
+          <div class="input-box">
+            <form [formGroup]="formTrans">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-field">
+                    <input type="text" class="input" formControlName="nit" required>
+                    <label for="nit">NIT</label>
+                    <small class="form-control-feedback text-danger" *ngIf="campoValido('nit')">
+                      El NIT no puede estar vacio, minimo 6 caracteres.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-field">
+                    <input type="text" class="input" formControlName="dpi" required>
+                    <label for="dpi">DPI</label>
+                    <small class="form-control-feedback text-danger" *ngIf="campoValido('dpi')">
+                      El DPI no puede estar vacio, minimo 12 caracteres.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="input-field">
+                    <input type="text" class="input" formControlName="razon_social" required>
+                    <label for="razon_social">RAZON SOCIAL</label>
+                    <small class="form-control-feedback text-danger" *ngIf="campoValido('razon_social')">
+                      El razon social no puede estar vacio, minimo 2 caracteres.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-field">
+                    <input type="text" class="input" formControlName="nombres" required>
+                    <label for="nombres">NOMBRES</label>
+                    <small class="form-control-feedback text-danger" *ngIf="campoValido('nombres')">
+                      Los nombres no puede estar vacios, minimo 2 caracteres.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-field">
+                    <input type="text" class="input" formControlName="apellidos" required>
+                    <label for="apellidos">APELLIDOS</label>
+                    <small class="form-control-feedback text-danger" *ngIf="campoValido('apellidos')">
+                      Los apellidos no puede estar vacios, minimo 2 caracteres.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="input-field">
+                    <input type="text" class="input" formControlName="direccion" required>
+                    <label for="direccion">DIRECCION</label>
+                    <small class="form-control-feedback text-danger" *ngIf="campoValido('direccion')">
+                      La direccion no puede estar vacia, minimo 2 caracteres.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-field">
+                    <input type="text" class="input" formControlName="telefono_domiciliar"
+                      data-mdb-input-mask="(999) 9999-9999" required>
+                    <label for="telefono_domiciliar">TELEFONO DOMICILIAR</label>
+                    <small class="form-control-feedback text-danger" *ngIf="campoValido('telefono_domiciliar')">
+                      El telefono debe contener 8 numeros y no puede estar vacio.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-field">
+                    <input type="text" class="input" formControlName="telefono_movil" required>
+                    <label for="telefono_domiciliar">TELEFONO MOVIL</label>
+                    <small class="form-control-feedback text-danger" *ngIf="campoValido('telefono_domiciliar')">
+                      El telefono debe contener 8 numeros y no puede estar vacio.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <br />
+
+              <div class="row">
+                <div class="col-md-3" style="text-align: center;">
+                  <label style="text-align:justify;">Estado</label>
+                  <div class="form-check form-inline">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" id="radioActivo" value="A" formControlName="estado"
+                        id="radioActivo" checked="checked" />
+                      <label class="form-check-label" for="radioActivo">
+                        Activo
+                      </label>
+                    </div>
+
+                    <div class="form-check" style="margin-left: 10px;">
+                      <input class="form-check-input" type="radio" value="I" formControlName="estado"
+                        id="radioInactivo2" />
+                      <label class="form-check-label" for="radioInactivo2">
+                        Inactivo
+                      </label>
+                    </div>
+                  </div>
+
+                  <small class="form-control-feedback text-danger" *ngIf="campoValido('estado')">
+                    Debe seleccion un estado.
+                  </small>
+                </div>
               </div>
 
-              <div class="form-check" style="margin-left: 10px;">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="I"
-                  formControlName="estado"
-                  id="radioInactivo2"
-                />
-                <label class="form-check-label" for="radioInactivo2">
-                  Inactivo
-                </label>
+              <div class="form-row" style="margin-bottom: 07px;">
+                <div class="col-xs-2 col-xs-6">
+                  <button type="submit" class="btn btn-primary btn-sm" [disabled]="!formTrans.valid"
+                    (click)="guartarTans()">
+
+                  </button>
+                </div>
+                <div class="col-xs-2 col-xs-6">
+                  <button type="submit" class="btn btn-warning btn-sm" (click)="ocultaForm()">
+                    CANCELAR
+                  </button>
+                </div>
               </div>
-            </div>
+              &nbsp;
+            </form>
 
-            <small
-              class="form-control-feedback text-danger"
-              *ngIf="campoValido('estado')"
-            >
-              Debe seleccion un estado.
-            </small>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>TELEFONO DOMICILIAR</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="telefono_domiciliar"
-              data-mdb-input-mask="(999) 9999-9999"
-              placeholder="Telefono domiciliar"
-            />
-            <small
-              class="form-control-feedback text-danger"
-              *ngIf="campoValido('telefono_domiciliar')"
-            >
-              El telefono debe contener 8 numeros y no puede estar vacio.
-            </small>
-          </div>
-          <div class="form-group col-md-6">
-            <label>TELEFONO MOVIL</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="telefono_movil"
-              placeholder="Telefono movil"
-              (click)="valform()"
-            />
-            <small
-              class="form-control-feedback text-danger"
-              *ngIf="campoValido('telefono_domiciliar')"
-            >
-              El telefono debe contener 8 numeros y no puede estar vacio.
-            </small>
-          </div>
-        </div>
-        <br />
-        <div class="form-row" style="margin-bottom: 07px;">
-          <div class="col-xs-2 col-xs-6">
-            <button
-              type="submit"
-              class="btn btn-primary btn-sm"
-              [disabled]="!formTrans.valid"
-              (click)="guartarTans()"
-            >
-             
-            </button>
-          </div>
-          <div class="col-xs-2 col-xs-6">
-            <button
-              type="submit"
-              class="btn btn-warning btn-sm"
-              (click)="ocultaForm()"
-            >
-              CANCELAR
-            </button>
-          </div>
-        </div>
-        &nbsp;
-      </form>
 
-      <!--   <div class="card-footer text-muted"></div>
+          <!--   <div class="card-footer text-muted"></div>
               <span>ValorFormulario</span>
               <pre>{{formTrans.value | json}}</pre>
               <span>EstadoFormulario</span>
               <pre>{{formTrans.status| json}}</pre>
           -->
-    </div>
-  </div>
-  </div>
-</div>
-  <!--Tabla de transportista-->
-    <div class="container-fluid">
-        <div class="container-md">
-            <div class="card border-light">
-                <div class="card-header" style="text-align: center;font-size:x-large; margin-top: 25px;">
-                    <h1>Transportistas</h1>
-                </div>   
-                <div class="card-body">
-                  <div>
-                    <button class="btn" (click)="ocultaForm()"><i class="bi bi-plus-circle"></i> Nuevo</button> <!--disabled="formTrans.valid"-->
-                  </div>
-                  
-                  <br>
-                    <table id="mydatatable" class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
-                        <thead>
-                            <tr>
-                                <th style="visibility: hidden; display: none;">id</th>
-                                <th>NIT</th>
-                                <th>NOMBRES</th>
-                                <th>APELLIDOS</th>
-                                <th>RAZON SOCIAL</th>
-                                <th>DIRECCION</th>
-                                <th>TELEFONO</th>
-                                
-                                <th>ESTADO</th>
-                                <th class="text-nowrap w100">Acciones</th>  
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of trans">
-                                <td style="visibility: hidden; display: none;">
-                                  {{ item.trans_id }}
-                                </td>
-                                <td>{{ item.trans_nit }}</td>
-                                <td>{{ item.trans_nombres }}</td>
-                                <td>{{ item.trans_apellidos }}</td>
-                                <td>{{ item.trans_razon_social }}</td>
-                                <td>{{ item.trans_direccion }}</td>
-                                <td style="text-align: center;">{{ item.trans_telefono }}</td>
-                               
-                                <td style="text-align: center;">{{ item.trans_estado }}</td>
-                                <td style="text-align: center;">
-                                  <div class="row mx-md-n1">
-                                    <div class="col px-md-1">
-                                     
-                                      <a 
-                                      class="bi bi-pencil-fill cursor"
-                                      (click)="editarTransporte(item)"
-                                      style="font-size: 1rem; width: 200px;cursor:pointer;" 
-                                      ></a>
-                                    </div>
-                                    <div class="col px-md-1">
-                                     
-                                      <a
-                                        class="bi bi-trash cursor"
-                                        style="font-size: 1rem;cursor:pointer;"
-                                        (click)="eliminarTrans(item)"
-                                      ></a>
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
-                        </tbody>
-                    </table>
-                </div> 
-            </div>
-
         </div>
+      </div>
+    </div>
+  </div>
+  <!--Tabla de transportista-->
+  <div class="container-fluid">
+    <div class="container-md">
+      <div class="card border-light">
+        <div class="card-header" style="text-align: center;font-size:x-large; margin-top: 25px;">
+          <h1>Transportistas</h1>
+        </div>
+        <div class="card-body">
+          <div>
+            <button class="btn" (click)="ocultaForm()"><i class="bi bi-plus-circle"></i> Nuevo</button>
+            <!--disabled="formTrans.valid"-->
+          </div>
+
+          <br>
+          <table id="mydatatable" class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <thead>
+              <tr>
+                <th style="visibility: hidden; display: none;">id</th>
+                <th>NIT</th>
+                <th>NOMBRES</th>
+                <th>APELLIDOS</th>
+                <th>RAZON SOCIAL</th>
+                <th>DIRECCION</th>
+                <th>TELEFONO</th>
+
+                <th>ESTADO</th>
+                <th class="text-nowrap w100">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of trans">
+                <td style="visibility: hidden; display: none;">
+                  {{ item.trans_id }}
+                </td>
+                <td>{{ item.trans_nit }}</td>
+                <td>{{ item.trans_nombres }}</td>
+                <td>{{ item.trans_apellidos }}</td>
+                <td>{{ item.trans_razon_social }}</td>
+                <td>{{ item.trans_direccion }}</td>
+                <td style="text-align: center;">{{ item.trans_telefono }}</td>
+
+                <td style="text-align: center;">{{ item.trans_estado }}</td>
+                <td style="text-align: center;">
+                  <div class="row mx-md-n1">
+                    <div class="col px-md-1">
+
+                      <a class="bi bi-pencil-fill cursor" (click)="editarTransporte(item)"
+                        style="font-size: 1rem; width: 200px;cursor:pointer;"></a>
+                    </div>
+                    <div class="col px-md-1">
+
+                      <a class="bi bi-trash cursor" style="font-size: 1rem;cursor:pointer;"
+                        (click)="eliminarTrans(item)"></a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
     </div>
-   
+
+  </div>
+
 
 </div>
