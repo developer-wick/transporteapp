@@ -4,9 +4,11 @@
 
 export const environment = {
   production: false,
+
+  base_url: 'https://orca-app-kl4t4.ondigitalocean.app/api'
   //base_ulr: 'http://159.89.53.199:8080/CatalogosTRS/api'
   //base_ulr: 'http://localhost:8080/CatalogosTRS/api'
-  base_ulr: 'http://10.75.15.201:8080/CatalogosTRS/api'
+  //base_ulr: 'http://10.75.15.201:8080/CatalogosTRS/api'
 };
 
 /*

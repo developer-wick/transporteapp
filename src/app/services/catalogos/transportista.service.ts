@@ -5,7 +5,7 @@ import { Transportista } from 'src/app/components/model/Transportista';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 
-const url = environment.base_ulr;
+const url = environment.base_url;
 
 
 @Injectable({

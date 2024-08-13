@@ -14,8 +14,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class LoginComponent implements OnInit {
 
   user = {
-    username: '',
-    passwd: ''
+    usuario: '',
+    password: ''
   };
 
   constructor(
@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
 
   singin () {
     console.log("MODELO DE USUARIO.: "+JSON.stringify(this.user));
-    console.log("DATOS DE USUARIO..: "+this.user.username);
-    console.log("DATOS DE USUARIO..: "+this.user.passwd);
+    console.log("DATOS DE USUARIO..: "+this.user.usuario);
+    console.log("DATOS DE USUARIO..: "+this.user.password);
     /*
     localStorage.setItem('token',this.user.nombre);
     this.router.navigate(['/home']);*/
@@ -40,8 +40,8 @@ export class LoginComponent implements OnInit {
 
     this.authservice.singin(this.user).subscribe(
       res => {
-        let msg = res.ms;
-        var codmsg = msg.codmsg;
+        let msg = res.msg;
+        var codmsg = res.usr;
         
         console.log("MENSAJE..: "+codmsg);
         console.log("RESPUESTA..: "+JSON.stringify(res));
@@ -53,15 +53,15 @@ export class LoginComponent implements OnInit {
           setTimeout(() => {
             this.spinner.hide();
           }, 5000);
-          let tok = res.jwt;
+          let tok = res.tk;
           console.log('TOKEN:::....',tok)
-          var personal = res.usuario;
-          var usuario = personal.username;
-          localStorage.setItem('User', usuario);
+          //var personal = res.usuario;
+          //var usuario = personal.username;
+          //localStorage.setItem('User', usuario);
           localStorage.setItem('token', tok);
           Swal.fire({
             title: 'Bienvenido.',
-            text: msg.mensjae,
+            text: msg,
             timer: 1000
           })
 
@@ -71,11 +71,11 @@ export class LoginComponent implements OnInit {
         if (codmsg == '0') {
           Swal.fire({
             title: "Error !",
-            text: msg.mensaje,
+            text: msg,
             timer: 1000
           });
 
-          console.log('VALOR ', msg.mensaje)
+          console.log('VALOR ', msg)
         }
       },
       err =>{

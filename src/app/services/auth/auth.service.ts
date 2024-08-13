@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-const URL = environment.base_ulr;
+const URL = environment.base_url;
 
 @Injectable({
   providedIn: 'root'
